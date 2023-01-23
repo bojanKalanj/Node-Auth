@@ -14,6 +14,19 @@ const deleteLastUser = expressAsyncHandler(async (_req, res) => {
     });
 });
 
+const getLastUser = expressAsyncHandler(async (_req, res) => {
+  User.findOne({})
+    .sort({ createdAt: -1 })
+    .exec(function (err, user) {
+      if (err) {
+        res.status(400).json({ message: "No user" });
+      } else {
+        res.status(200).json(user);
+      }
+    });
+});
+
 module.exports = {
   deleteLastUser,
+  getLastUser,
 };

@@ -24,6 +24,7 @@ app.use(
   onlyDevelopment,
   require("./routes/cypressTestsRoutes")
 );
+app.use("/api/business", require("./routes/businessRoutes"));
 
 app.use(errorHandler);
 
